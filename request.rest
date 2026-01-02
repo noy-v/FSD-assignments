@@ -4,6 +4,7 @@
 @baseUrl = http://{{hostname}}:{{port}}
 @postId = 694a83eb769031bec8dc8c36
 @senderId = user_123
+@commentId = 694a83eb769031bec8dc8c37
 
 ### ----------------------------------------------------------------
 ### POSTS API (Developer 1)
@@ -38,4 +39,48 @@ Content-Type: application/json
     "sender": "{{senderId}}"
 }
 
+### 6. Delete a Post
+DELETE {{baseUrl}}/post/{{postId}}
+
+### ----------------------------------------------------------------
+### COMMENTS API (Developer 2)
+### ----------------------------------------------------------------
+
+### 1. Add a New Comment
+POST {{baseUrl}}/comment
+Content-Type: application/json
+
+{
+    "content": "This is a great post!",
+    "sender": "{{senderId}}",
+    "postId": "{{postId}}"
+}
+
+### 2. Get All Comments
+GET {{baseUrl}}/comment
+
+### 3. Get a Comment by ID
+GET {{baseUrl}}/comment/{{commentId}}
+
+### 4. Get Comments by Post ID
+GET {{baseUrl}}/comment?postId={{postId}}
+
+### 5. Get Comments by Sender
+GET {{baseUrl}}/comment?sender={{senderId}}
+
+### 6. Get Comments by Post ID and Sender
+GET {{baseUrl}}/comment?postId={{postId}}&sender={{senderId}}
+
+### 7. Update a Comment
+PUT {{baseUrl}}/comment/{{commentId}}
+Content-Type: application/json
+
+{
+    "content": "Updated comment content",
+    "sender": "{{senderId}}",
+    "postId": "{{postId}}"
+}
+
+### 8. Delete a Comment
+DELETE {{baseUrl}}/comment/{{commentId}}
  
